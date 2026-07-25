@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Outfit&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="script" href="script.js" />
+    <title>Frontend Mentor | Article preview component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 0.6875rem;
+        text-align: center;
+        position: absolute;
+        bottom: 10px;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-container">
+      <img class="left-image" src="images/drawers.jpg" alt="Drawers" />
+      <div class="card-content-container">
+        <span class="title text-preset-1-bold">
+          Shift the overall look and feel by adding these wonderful touches to
+          furniture in your home
+        </span>
+        <span class="text-preset-2-medium description">
+          Ever been in a room and felt like something was missing? Perhaps it
+          felt slightly bare and uninviting. I’ve got some simple tips to help
+          you make any room feel complete.
+        </span>
+        <div class="extra-information">
+          <div class="user-information-container">
+            <img
+              class="avatar"
+              src="images/avatar-michelle.jpg"
+              alt="Michelle Appleton's avatar"
+            />
+            <div class="user-information">
+              <span class="username text-preset-2-bold">Michelle Appleton</span>
+              <span class="date text-preset-2-medium">28 Jun 2020</span>
+            </div>
+          </div>
+          <div class="tooltip-container">
+            <button class="share-button">
+              <img class="share-icon" src="images/icon-share.svg" alt="Share" />
+              <img
+                class="hover-share-icon"
+                src="images/icon-share-white.svg"
+                alt="Share"
+              />
+            </button>
+            <div class="tooltip">
+              <span class="share-text text-preset-3">SHARE</span>
+              <img src="images/icon-facebook.svg" alt="Facebook" />
+              <img src="images/icon-twitter.svg" alt="Twitter" />
+              <img src="images/icon-pinterest.svg" alt="Pinterest" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="attribution text-preset-2-medium">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">dungnm02</a>.
+    </footer>
+  </body>
+</html>

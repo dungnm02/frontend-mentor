@@ -9,3 +9,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the branch/commit/publishing workflow
 | Challenge | Live | Difficulty |
 |---|---|---|
 | QR code component | [view](https://dungnm02.github.io/frontend-mentor/qr-code-component/qr-code-component-main/qr-code-component-main/) | Newbie |
+| Article preview component | [view](https://dungnm02.github.io/frontend-mentor/article-preview-component-master/article-preview-component-master/) | Junior |

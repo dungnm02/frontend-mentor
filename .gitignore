@@ -1,0 +1,4 @@
+# macOS junk. The Frontend Mentor .gitignore files ship inside each challenge's
+# extracted folder, so they never cover sibling folders (e.g. the -figma zips).
+__MACOSX/
+.DS_Store

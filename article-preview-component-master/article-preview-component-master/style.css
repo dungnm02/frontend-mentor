@@ -1,288 +1,353 @@
-* {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+h1,
+p,
+body {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
 
 :root {
-    --white: #FFFFFF;
-    --grey900: #48556A;
-    --grey500: #6E8098;
-    --grey400: #9DAEC2;
-    --grey200: #ECF2F8;
+  --white: #ffffff;
+  --grey900: hsl(217, 19%, 35%);
+  --grey500: hsl(214, 17%, 51%);
+  --grey400: hsl(212, 23%, 69%);
+  --grey200: hsl(210, 46%, 95%);
+  --link: hsl(228, 45%, 44%);
+  --shadow-color: hsla(212, 23%, 69%, 0.5);
 
-    --spacing-0: 0px;
-    --spacing-200: 16px;
-    --spacing-300: 24px;
-    --spacing-400: 32px;
-    --spacing-500: 40px;
-    --spacing-600: 48px;
-    --spacing-700: 56px;
-    --spacing-800: 64px;
-    --spacing-1300: 104px;
-    --spacing-2000: 160px;
+  --radius: 10px;
+
+  /* Padding is tokenised per side because the mobile share bar bleeds out to
+     the card edges with negative margins and has to cancel it exactly. */
+  --card-padding-inline: 32px;
+  --card-padding-top: 36px;
+  --card-padding-bottom: 16px;
+
+  /* The title is one responsive preset, not a preset plus two overrides. */
+  --title-size: 1rem;
+  --title-line-height: 1.5;
+
+  /* The design's vertical rhythm is not a uniform stack gap: 12px from title
+     to description, then a wider step down to the author row. */
+  --gap-stack: 12px;
+  --gap-author-row: 32px;
 }
 
+/* Below ~340px the share bar runs out of room (it needs 206.5px of content
+   box), so buy back 16px of card padding rather than letting the button
+   collide with the Pinterest icon. */
+@media (max-width: 21.25rem) {
+  :root {
+    --card-padding-inline: 24px;
+  }
+}
+
+/* --- Type presets (from the design tokens) --- */
+
 .text-preset-1-bold {
-    font-family: "Manrope", sans-serif;
-    font-size: 20px;
-    line-height: 130%;
-    letter-spacing: 0.25px;
-    font-weight: bold;
+  font-size: var(--title-size);
+  line-height: var(--title-line-height);
+  letter-spacing: 0.0125em;
+  font-weight: 700;
 }
 
 .text-preset-2-bold {
-    font-family: "Manrope", sans-serif;
-    font-size: 13px;
-    line-height: 140%;
-    letter-spacing: 0.12%;
-    font-weight: bold;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  letter-spacing: 0.0092em;
+  font-weight: 700;
 }
 
 .text-preset-2-medium {
-    font-family: "Manrope", sans-serif;
-    font-size: 13px;
-    line-height: 140%;
-    letter-spacing: 0.12%;
-    font-weight: 500;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  letter-spacing: 0.0092em;
+  font-weight: 500;
 }
 
 .text-preset-3 {
-    font-family: "Manrope", sans-serif;
-    font-size: 13px;
-    line-height: 140%;
-    letter-spacing: 25%;
-    font-weight: 500;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  letter-spacing: 0.3846em;
+  font-weight: 500;
+  text-transform: uppercase;
 }
+
+/* --- Page --- */
 
 body {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: #ECF2F8;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+  background-color: var(--grey200);
+  font-family: "Manrope", sans-serif;
+  font-size: 0.8125rem;
 }
+
+/* --- Card --- */
 
 .card-container {
-    width: 730px;
-    height: 280px;
-    background-color: white;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-}
-
-.card-content-container {
-    padding: 40px;
-    height: 100%;
-    width: 445px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-}
-
-.title {
-    color: var(--grey900);
-}
-
-.description {
-    color: var(--grey500);
-}
-
-.extra-information {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.user-information-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.user-information {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 327px;
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 40px 40px -10px var(--shadow-color);
 }
 
 .left-image {
-    width: 285px;
-    height: 280px;
-    object-fit: cover;
-    object-position: left;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 
-.attribution {
-    justify-self: flex-end;
+.card-content-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+  padding: var(--card-padding-top) var(--card-padding-inline)
+    var(--card-padding-bottom);
 }
 
-.date {
-    color: var(--grey400);
+.title {
+  color: var(--grey900);
+}
+
+.description {
+  color: var(--grey500);
+}
+
+/* --- Footer row: author + share --- */
+
+.extra-information {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: calc(var(--gap-author-row) - var(--gap-stack));
+}
+
+.user-information-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user-information {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .username {
-    color: var(--grey900);
+  color: var(--grey900);
 }
 
-.tooltip-container {
-    position: relative;
+.date {
+  color: var(--grey400);
 }
+
+/* --- Share button --- */
 
 .share-button {
-    border-radius: 50%;
-    border: 0;
-    background-color: var(--grey200);
-    width: 32px;
-    height: 32px;
-    padding: 9px 8px 10px 9px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--grey200);
+  cursor: pointer;
 }
 
-.share-button:hover {
-    background-color: var(--grey500);
-    cursor: pointer;
-    padding: 9px 8px 10px 9px;
-
+.share-button:focus-visible {
+  outline: 2px solid var(--grey500);
+  outline-offset: 2px;
 }
 
 .share-button img {
-    width: 15px;
-    height: 12.97px;
+  width: 15px;
+  height: 13px;
 }
 
-.hover-share-icon {
-    display: none;
+.share-icon-active {
+  display: none;
 }
 
-.share-button:hover .share-icon {
-    display: none;
+/* Hover darkens and flips to the white icon (4.09:1) — lightening the
+   background would have dropped the icon below the 3:1 non-text minimum. */
+.share-button:hover,
+.is-share-open .share-button {
+  background-color: var(--grey500);
 }
 
-.share-button:hover .hover-share-icon {
-    display: inline-block;
+.share-button:hover .share-icon,
+.is-share-open .share-icon {
+  display: none;
+}
+
+.share-button:hover .share-icon-active,
+.is-share-open .share-icon-active {
+  display: block;
+}
+
+/* --- Share panel --- */
+
+.tooltip-container {
+  display: contents;
 }
 
 .tooltip {
-    width: 248px;
-    height: 55px;
-    position: absolute;
-    left: 50%;
-    bottom: 100%;
-    transform: translateX(-50%);
-    visibility: hidden;
-    display: flex;
-    gap: 16px;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 38px;
-    border-radius: 10px;
-    margin-bottom: 25px;
-}
-
-.tooltip::after {
-    position: absolute;
-    width: 0;
-    height: 0;
-    left: 50%;
-    top: 100%;
-    transform: translateX(-50%);
-    content: "";
-    border-bottom: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 12px solid var(--grey900);
+  display: none;
+  align-items: center;
+  gap: 16px;
+  /* The panel follows its trigger in the DOM so tab order is correct; on
+     mobile it is painted to the left of the button again. */
+  order: -1;
 }
 
 .tooltip img {
-    width: 20px;
-    height: 20px;
-}
-
-.tooltip-container:hover .tooltip {
-    visibility: visible;
-    background-color: var(--grey900);
+  flex-shrink: 0;
+  width: 20px;
+  height: auto;
 }
 
 .share-text {
-    color: var(--grey400);
-    margin-right: 8px;
+  color: var(--grey400);
 }
 
-
-@media (max-width: 768px) {
-    .card-container {
-        width: 608px;
-        height: 346px;
-    }
-
-    .left-image {
-        width: 229px;
-        height: 346px;
-        object-fit: cover;
-        object-position: center;
-    }
-
-    .card-content-container {
-        padding: 32px 41px 36px 41px;
-        width: 379px;
-    }
+.is-share-open .tooltip {
+  display: flex;
 }
 
-@media (max-width: 375px) {
-    .card-container {
-        width: 327px;
-        height: 538px;
-        gap: 32px;
-        flex-direction: column;
+/* --- Mobile share panel: dark bar filling the bottom of the card --- */
 
-    }
+@media (max-width: 47.9375rem) {
+  .is-share-open .user-information-container {
+    display: none;
+  }
 
-    .left-image {
-        width: 327px;
-        height: 200px;
-        object-fit: cover;
-        object-position: center;
-    }
+  .is-share-open .extra-information {
+    margin-inline: calc(-1 * var(--card-padding-inline));
+    margin-bottom: calc(-1 * var(--card-padding-bottom));
+    padding: 16px var(--card-padding-inline);
+    background-color: var(--grey900);
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+}
 
-    .card-content-container {
-        margin: 0px 30px 0px 30px;
-        padding: 0px;
-        width: fit-content;
-        height: fit-content;
-        justify-content: space-between;
-        gap: 24px;
-    }
+/* --- Attribution --- */
 
-    .extra-information {
-        margin-top: 24px;
-    }
+.attribution {
+  text-align: center;
+  color: var(--grey900);
+}
 
-    .tooltip::after {
-        display: none;
-    }
+.attribution a {
+  color: var(--link);
+}
 
-    .tooltip {
-        position: static;
-        visibility: visible;
-        display: none;
-    }
+/* --- Desktop --- */
 
-    .tooltip-container:hover .tooltip {
-        display: block;
-        background-color: var(--grey900);
-    }
+@media (min-width: 48rem) {
+  :root {
+    --card-padding-inline: 40px;
+    --card-padding-top: 32px;
+    --card-padding-bottom: 32px;
+    --title-size: 1.25rem;
+    --title-line-height: 1.4;
+    --gap-author-row: 20px;
+  }
+
+  .card-container {
+    flex-direction: row;
+    max-width: 730px;
+    min-height: 280px;
+  }
+
+  .left-image {
+    flex-shrink: 0;
+    align-self: stretch;
+    width: 285px;
+    height: auto;
+    object-position: left;
+    border-radius: var(--radius) 0 0 var(--radius);
+  }
+
+  /* Share panel becomes a tooltip floating above the button */
+  .tooltip-container {
+    display: block;
+    position: relative;
+  }
+
+  .tooltip {
+    display: flex;
+    visibility: hidden;
+    position: absolute;
+    bottom: calc(100% + 26px);
+    width: 248px;
+    padding: 18px 36px;
+    background-color: var(--grey900);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 10px var(--shadow-color);
+    /* Right-anchored by default: a centred 248px panel does not fit inside
+       the viewport between 768px and 895px and would force a horizontal
+       scrollbar while clipping the last icon. */
+    right: -8px;
+  }
+
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 12px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid var(--grey900);
+  }
+
+  .is-share-open .tooltip {
+    visibility: visible;
+  }
+}
+
+/* From 896px up the centred panel fits, which is what the 1440px design shows. */
+@media (min-width: 56rem) {
+  .tooltip {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .tooltip::after {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

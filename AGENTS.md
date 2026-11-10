@@ -11,9 +11,10 @@ Repo-wide rules for AI assistants working anywhere in this repository. This file
 
 Full detail lives in `CONTRIBUTING.md`. Summary:
 
-- Branch per challenge: `challenge/<slug>`, merge to `main` yourself when done — no PR needed.
+- Slug = the Frontend Mentor URL slug, without `-main`/`-master`. Top folder and branch use it: `<slug>/` and `challenge/<slug>`.
+- Commit untouched starter files first: `chore(<slug>): add starter files`, then build commits.
 - Commit messages: `<type>(<slug>): <imperative summary>` (`feat`/`style`/`fix`/`docs`/`chore`), one challenge per commit.
 - `main` always deploys via GitHub Pages from root — keep it in a working state.
-- When a challenge is finished, add its live Pages link to the root `README.md`.
+- When a challenge is finished, add its live Pages link to BOTH the root `README.md` and `index.html`, then delete the local and remote branch.
 
 Follow these conventions for any git operation in this repo without needing them re-explained each time.

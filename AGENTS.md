@@ -18,3 +18,12 @@ Full detail lives in `CONTRIBUTING.md`. Summary:
 - When a challenge is finished, add its live Pages link to BOTH the root `README.md` and `index.html`, then delete the local and remote branch.
 
 Follow these conventions for any git operation in this repo without needing them re-explained each time.
+
+## Bug log
+
+When the user gets stuck on an error for more than 15 minutes, or fixes a bug, add one row to `BUGS.md` at the repo root: date, challenge slug, symptom, root cause, how it was found, minutes spent, whether it was fixed independently.
+
+- Ask for these details if they are missing; do not invent them.
+- Record the root cause, not just the workaround.
+- Never delete old rows, and mark repeats with `lặp lại` in the notes column.
+- This log feeds the 4-week review in `C:\Users\admin\Documents\LifeLog\career\progress.md`. Do not move it into the challenge folders.
